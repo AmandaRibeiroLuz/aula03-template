@@ -1,6 +1,9 @@
 <script setup>
+import { ref } from 'vue';
+
 const nome = prompt(`Informe o seu nome.`);
 const idade = Number(prompt(`Informe a sua idade.`));
+const contador = ref(0);
 
 function inverter(texto) {
   return texto.split('').reverse().join('');
@@ -44,8 +47,10 @@ function decrementar() {
     <button v-on:click="incrementar">+</button>
     <button @click="decrementar">-</button>
 
-    <div v-if="contador > 10">O valor é maior que 10.</div>
-    <div v-else>O valor é menor que 10.</div>
+    <div :style="{ backgroundColor: contador > 10 ? 'hsla(125, 83%, 65%, 0.699)' : 'rgba(248, 110, 100, 0.788)' }">
+      <p v-if="contador > 10">Valor maior que 10</p>
+      <p v-else>Valor menor que 10</p>
+    </div>
 
   </div>
 </template>
@@ -77,8 +82,9 @@ h2 {
 button {
   padding: 5px 15px;
   margin: 5px;
-  background-color: #6db3ecbb;
+  background-color: #4e9fe2bb;
   color:  rgb(9, 67, 153);
   border-radius: 5px;
+  border: none;
 }
 </style>
